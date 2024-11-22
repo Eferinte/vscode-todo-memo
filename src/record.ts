@@ -21,16 +21,14 @@ const attachFilePath = () => {
 const attachRecordFile = async (): Promise<TranslateCell<BaseTransInfo>[]> => {
   const filePath = attachFilePath()
 
-  const files = await vscode.workspace.findFiles(`/${CONFIG_FILE_NAME}`)
-
-  if (files.length === 0) {
-    vscode.workspace.fs.writeFile(filePath, new TextEncoder().encode(''))
-    return []
-  }
-
   try {
     // 读取文件内容
-    const fileData = await vscode.workspace.fs.readFile(filePath)
+    let fileData
+    try {
+      fileData = await vscode.workspace.fs.readFile(filePath)
+    } catch (error) {
+      return []
+    }
 
     // 将 Uint8Array 转换为字符串
     const fileContent = Buffer.from(fileData).toString('utf8')

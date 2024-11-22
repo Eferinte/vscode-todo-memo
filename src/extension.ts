@@ -7,14 +7,15 @@ import { record, translateAndRecord } from './record'
 
 const testApiServiceAvailable = async () => {
   // test api service
-  if (await translator.test())
+  if (await translator.test()) {
     vscode.window.showInformationMessage(
       `connect to ${translator.getServiceName()} successfully !`,
     )
-  else
+  } else {
     vscode.window.showErrorMessage(
       `connect to ${translator.getServiceName()} failed !`,
     )
+  }
 }
 
 const init = async () => {
@@ -51,6 +52,13 @@ const init = async () => {
   })
 }
 
+const applyUserConfig = () => {
+  const targetLanguage = vscode.workspace
+    .getConfiguration('translator')
+    .get<string>('targetLanguage')
+  targetLanguage && translator.setTarget(targetLanguage)
+}
+
 export async function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
     vscode.commands.registerCommand('translator.record', record),
@@ -72,8 +80,16 @@ export async function activate(context: vscode.ExtensionContext) {
 
   init()
 
+  applyUserConfig()
+
   testApiServiceAvailable()
 }
+
+vscode.workspace.onDidChangeConfiguration((event) => {
+  if (event.affectsConfiguration('translator.targetLanguage')) {
+    applyUserConfig()
+  }
+})
 
 // This method is called when your extension is deactivated
 export function deactivate() {}
