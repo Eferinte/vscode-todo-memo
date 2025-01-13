@@ -14,13 +14,13 @@ const addMemo = () => {
 
 const applyUserConfig = () => {
   const targetLanguage = vscode.workspace
-    .getConfiguration('translator')
+    .getConfiguration('todo-memo')
     .get<string>('targetLanguage')
 }
 
 export async function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(
-    vscode.commands.registerCommand('translator.add-memo', addMemo),
+    vscode.commands.registerCommand('todo-memo.add-memo', addMemo),
   )
 
   init()
@@ -29,7 +29,7 @@ export async function activate(context: vscode.ExtensionContext) {
 }
 
 vscode.workspace.onDidChangeConfiguration((event) => {
-  if (event.affectsConfiguration('translator.targetLanguage')) {
+  if (event.affectsConfiguration('todo-memo.targetLanguage')) {
     applyUserConfig()
   }
 })

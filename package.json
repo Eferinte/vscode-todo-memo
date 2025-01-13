@@ -24,11 +24,11 @@
     ],
     "keybindings": [
       {
-        "key": "ctrl+shift+t",
+        "key": "ctrl+shift+z",
         "command": "todo-memo.add-memo",
         "when": "editorTextFocus",
-        "mac": "cmd+shift+t",
-        "win": "ctrl+shift+t"
+        "mac": "cmd+shift+z",
+        "win": "ctrl+shift+z"
       }
     ],
     "configuration": {
