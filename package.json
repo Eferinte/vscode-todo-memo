@@ -1,7 +1,7 @@
 {
-  "name": "translator",
-  "displayName": "translator",
-  "description": "翻译",
+  "name": "todo-memo",
+  "displayName": "todo-memo",
+  "description": "定时提示",
   "icon": "logo.png",
   "publisher": "linxiaopeng",
   "version": "0.0.1",
@@ -18,29 +18,14 @@
   "contributes": {
     "commands": [
       {
-        "command": "translator.record",
-        "title": "写入最近一次翻译到配置"
-      },
-      {
-        "command": "translator.translateAndRecord",
-        "title": "翻译当前选中字符并写入配置"
-      },
-      {
-        "command": "translator.testApiServiceAvailable",
-        "title": "测试当前翻译接口是否可用"
+        "command": "todo-memo.add-memo",
+        "title": "添加todo-memo"
       }
     ],
     "keybindings": [
       {
-        "key": "ctrl+shift+r",
-        "command": "translator.record",
-        "when": "editorTextFocus",
-        "mac": "cmd+shift+r",
-        "win": "ctrl+shift+r"
-      },
-      {
         "key": "ctrl+shift+t",
-        "command": "translator.translateAndRecord",
+        "command": "todo-memo.add-memo",
         "when": "editorTextFocus",
         "mac": "cmd+shift+t",
         "win": "ctrl+shift+t"
@@ -49,7 +34,7 @@
     "configuration": {
       "title": "targetLanguage",
       "properties": {
-        "translator.targetLanguage": {
+        "todo-memo.targetLanguage": {
           "type": "string",
           "enum": [
             "en",
