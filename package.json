@@ -20,6 +20,14 @@
       {
         "command": "todo-memo.add-memo",
         "title": "添加todo-memo"
+      },
+      {
+        "command": "todo-memo.go-curr-memo",
+        "title": "跳转到memo位置"
+      },
+      {
+        "command": "todo-memo.show-memo-list",
+        "title": "跳转到memo位置"
       }
     ],
     "keybindings": [
@@ -29,6 +37,13 @@
         "when": "editorTextFocus",
         "mac": "cmd+shift+z",
         "win": "ctrl+shift+z"
+      },
+      {
+        "key": "ctrl+shift+t",
+        "command": "todo-memo.show-memo-list",
+        "when": "editorTextFocus",
+        "mac": "cmd+shift+t",
+        "win": "ctrl+shift+t"
       }
     ],
     "configuration": {
